@@ -1,0 +1,26 @@
+Before we start building the project it is very important for us to understand the working of 
+the ACS712 Current sensor as it is the key component of the project. Measuring current especially 
+AC current is always a tough task due to the noise coupled with it improper isolation problem etc. 
+But, with the help of this ACS712 module which was engineered by Allegro thing have become a lot 
+easier. This module works on the principle of Hall-effect, which was discovered by Dr. Edwin Hall. 
+According his principle, when a current carrying conductor is placed into a magnetic field, a 
+voltage is generated across its edges perpendicular to the directions of both the current and the 
+magnetic field. Let us not get too deep into the concept but, simply put we use a hall sensor to 
+measure the magnetic field around a current carrying conductor. This measurement will be in terms 
+of millivolts which we called as the hall-voltage. This measured hall-voltage is proportional to the 
+current that was flowing through the conductor. The major advantage of using ACS712 Current Sensor is 
+that is can measure both AC and DC current and it also provides isolation between the Load (AC/DC load) 
+and Measuring Unit (Microcontroller part). As shown in the picture we have three pins on the module 
+which are Vcc, Vout and Ground respectively. The 2-pin terminal block is where the current carrying 
+wire should be passed through. The module work on +5V so the Vcc should be powered by 5V and the ground 
+should be connected to Ground of the system. The Vout pin has an offset voltage of 2500mV, meaning when 
+there is no current flowing through the wire then the output voltage will be 2500mV and when current 
+flowing is positive, the voltage will be greater than 2500mV and when the current flowing is negative, 
+the voltage will be less than 2500mV. We will be using the Analog pin of Arduino to read the output voltage 
+(Vout) of the module, which will be 512(2500mV) when there is no current flowing through the wire. This 
+value will reduce as the current flows in negative direction and will increase as the current flows in 
+positive direction. The below table will help you understand how the output voltage and ADC value varies 
+based on the current flowing through the wire.
+
+Vout Voltage(mV) = (ADC Value/  1023)*5000
+Current Through the Wire (A) = (Vout(mv)-2500)/185
