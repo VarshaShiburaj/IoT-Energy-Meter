@@ -1,0 +1,5 @@
+Arduino Uno
+ESP12/NodeMCU
+ACS712-30Amp Current sensor
+Any AC Appliance
+Male-Female Wires
