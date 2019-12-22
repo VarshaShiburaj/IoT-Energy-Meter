@@ -1,0 +1,17 @@
+Connect Rx of ESP12 -> Tx of Arduino.
+
+Connect Tx of ESP12 -> Rx of Arduino.
+
+There is one analog pin available in NodeMCU (ESP12), we could use that pin but ESP series can 
+take upto 3.3 volts on their pins. As we are using current sensor which can give upto 5 Volts 
+so, it can damage our Wi-Fi module that’s why we are not using standalone NodeMCU. To make output 
+of current sensor 3.3V instead of 5V, we cannot use voltage divider circuit between Current sensor 
+and analog pin of NodeMCU because as we discussed above about the current sensor that at 2.5Volts 
+output, current is 0Amp. So, Arduino will read the current sensor value through analog pin and 
+send it to the Wi-Fi module ESP12 using Serial communication. Use voltage divider circuit at re-
+-ceiver pin of NodeMCU so that receiver pin can get upto 3.3 Voltage level.
+To monitor our energy uses over the internet, we have to use MQTT broker. We will use MQTT broker 
+as AdaFruit IO platform and follow the below process to make this IoT Energy Meter
+1. Setting up an AdaFruit account for storing Electricity meter readings.
+2. Create Applet in IFTTT for Triggering SMS/Email for Energy Meter
+3. Codes for Arduino and ESP12 Wi-Fi module.
